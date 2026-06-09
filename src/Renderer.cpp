@@ -1,6 +1,6 @@
 #include "Renderer.h"
 #include "Effects/EmptyEffect.h"
-//#include "Effects/PlasmaEffect.h"
+#include "Effects/PlasmaEffect.h"
 //#include "Effects/TunnelEffect.h"
 //#include "Effects/ParticlesEffect.h"
 #include <iostream>
@@ -24,13 +24,13 @@ bool Renderer::init(GLFWwindow* w)
     if (!createRenderPass()) return false;
     if (!createFrameResources()) return false;
 
-    effects.push_back(std::make_unique<EmptyEffect>());
-    //effects.push_back(std::make_unique<PlasmaEffect>());
+    //effects.push_back(std::make_unique<EmptyEffect>());
+    effects.push_back(std::make_unique<PlasmaEffect>());
     //effects.push_back(std::make_unique<TunnelEffect>());
     //effects.push_back(std::make_unique<ParticlesEffect>());
 
     for (auto& effect : effects) {
-        if (!effect->init(ctx)) {
+        if (!effect->init(ctx, renderPass)) {
             std::cerr << "Failed to initialize one or more effects\n";
             return false;
         }

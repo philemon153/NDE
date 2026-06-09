@@ -7,7 +7,7 @@
 class TunnelEffect : public Effect {
 public:
   TunnelEffect() {name = "Tunnel"; }
-  bool init(VulkanContext* ctx) override;
+  bool init(VulkanContext* ctx, VkRenderPass renderPass) override;
   void update(float time, const std::vector<float>& fft) override;
   void draw(VkCommandBuffer cmd, VkImageView currentImageView, VkExtent2D extent) override;
   void cleanup(VulkanContext* ctx) override;

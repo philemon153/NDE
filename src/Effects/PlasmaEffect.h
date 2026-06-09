@@ -1,19 +1,18 @@
 #pragma once
 #include "Effect.h"
 #include "../Shader.h"
-#include <vulkan/vulkan.hpp>
 #include <glm/glm.hpp>
 
 class PlasmaEffect : public Effect {
 public:
-  PlasmaEffect() { name = "Plasma"; }
-  bool init(VulkanContext* ctx) override;
+  bool init(VulkanContext* ctx, VkRenderPass renderPass) override;   // ← Updated
   void update(float time, const std::vector<float>& fft) override;
   void draw(VkCommandBuffer cmd, VkImageView currentImageView, VkExtent2D extent) override;
   void cleanup(VulkanContext* ctx) override;
 
 private:
   VulkanContext* context = nullptr;
+  VkRenderPass renderPass = VK_NULL_HANDLE;   // Store it
 
   VkPipeline pipeline = VK_NULL_HANDLE;
   VkPipelineLayout pipelineLayout = VK_NULL_HANDLE;
@@ -27,7 +26,7 @@ private:
   struct Uniforms {
     float time;
     float bass;
-    float mid;
+    float intensity;
     float padding;
     glm::vec2 resolution;
   } uniforms{};

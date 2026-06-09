@@ -2,7 +2,7 @@
 #include "../VulkanContext.h"
 #include <iostream>
 
-bool EmptyEffect::init(VulkanContext* ctx)
+bool EmptyEffect::init(VulkanContext* ctx, VkRenderPass renderPass)
 {
     context = ctx;
     std::cout << "EmptyEffect: Initialized\n";

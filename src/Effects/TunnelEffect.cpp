@@ -2,7 +2,7 @@
 #include "../VulkanContext.h"
 #include <iostream>
 
-bool TunnelEffect::init(VulkanContext* ctx)
+bool TunnelEffect::init(VulkanContext* ctx, VkRenderPass renderPass)
 {
     context = ctx;
     std::cout << "TunnelEffect: Initialized (stub)\n";

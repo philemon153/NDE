@@ -3,7 +3,7 @@
 #include <iostream>
 #include <glm/gtc/random.hpp>
 
-bool ParticlesEffect::init(VulkanContext* ctx)
+bool ParticlesEffect::init(VulkanContext* ctx, VkRenderPass renderPass)
 {
     context = ctx;
 
