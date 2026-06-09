@@ -5,15 +5,13 @@
 
 class ParticlesEffect : public Effect {
 public:
-  ParticlesEffect() { name = "Particles"; }
+  ParticlesEffect() : Effect("Particles") {}
   bool init(VulkanContext* ctx, VkRenderPass renderPass) override;
   void update(float time, const std::vector<float>& fft) override;
   void draw(VkCommandBuffer cmd, VkImageView currentImageView, VkExtent2D extent) override;
-  void cleanup(VulkanContext* ctx) override;
+  void cleanup() override;
 
 private:
-  VulkanContext* context = nullptr;
-
   struct Particle {
     glm::vec4 position;
     glm::vec4 velocity;

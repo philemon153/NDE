@@ -238,7 +238,7 @@ void Renderer::cleanup()
 
     // Effects
     for (auto& effect : effects) {
-        if (effect) effect->cleanup(ctx);
+        if (effect) effect->cleanup();
     }
     effects.clear();
 

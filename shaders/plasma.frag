@@ -18,7 +18,7 @@ void main() {
     float v3 = sin(length(p) * 20.0 - u.time * 3.0);
 
     float plasma = v1 + v2 * 0.6 + v3 * 0.4;
-    plasma *= u.intensity;
+    //plasma *= u.intensity;
 
     vec3 color = vec3(
         0.5 + 0.5 * sin(plasma * 5.0 + u.time),

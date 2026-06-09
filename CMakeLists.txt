@@ -44,10 +44,14 @@ add_executable(demoscene_testbed
         src/Renderer.cpp
         src/AudioSystem.cpp
         src/Shader.cpp
+        src/Effects/Effect.cpp
         src/Effects/EmptyEffect.cpp
+        src/Effects/ShaderEffect.cpp
         src/Effects/PlasmaEffect.cpp
         src/Effects/ParticlesEffect.cpp
         src/Effects/TunnelEffect.cpp
+        src/Effects/ShaderEffect.cpp
+        src/Effects/ShaderEffect.h
         # Add other effects here when ready
 )
 

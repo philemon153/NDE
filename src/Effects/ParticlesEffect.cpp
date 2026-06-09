@@ -22,6 +22,8 @@ bool ParticlesEffect::init(VulkanContext* ctx, VkRenderPass renderPass)
 
 void ParticlesEffect::update(float time, const std::vector<float>& fft)
 {
+    Effect::update(time, fft);
+
     // Move attractor in a nice pattern
     attractor.x = std::sin(time * 0.8f) * 0.7f;
     attractor.y = std::cos(time * 1.1f) * 0.6f;
@@ -57,12 +59,9 @@ void ParticlesEffect::update(float time, const std::vector<float>& fft)
 
 void ParticlesEffect::draw(VkCommandBuffer cmd, VkImageView currentImageView, VkExtent2D extent)
 {
-    // Placeholder for now
-    std::cout << "ParticlesEffect draw called - " << particles.size() << " particles\n";
 }
 
-void ParticlesEffect::cleanup(VulkanContext* ctx)
+void ParticlesEffect::cleanup()
 {
     particles.clear();
-    std::cout << "ParticlesEffect cleaned\n";
 }

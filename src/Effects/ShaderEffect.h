@@ -1,17 +1,21 @@
 #pragma once
 #include "Effect.h"
 #include "../Shader.h"
-#include <vulkan/vulkan.hpp>
 #include <glm/glm.hpp>
 
-class TunnelEffect : public Effect {
+class ShaderEffect : public Effect {
+protected:
+  ShaderEffect(const char* name) : Effect(name) {}
 public:
-  TunnelEffect() : Effect("Tunnel") {}
   bool init(VulkanContext* ctx, VkRenderPass renderPass) override;
   void draw(VkCommandBuffer cmd, VkImageView currentImageView, VkExtent2D extent) override;
   void cleanup() override;
 
+protected:
+  virtual VkShaderModule loadFragmentShader() = 0;
+
 private:
+
   VkPipeline pipeline = VK_NULL_HANDLE;
   VkPipelineLayout pipelineLayout = VK_NULL_HANDLE;
   VkDescriptorSetLayout descriptorSetLayout = VK_NULL_HANDLE;
@@ -20,14 +24,4 @@ private:
 
   VkBuffer uniformBuffer = VK_NULL_HANDLE;
   VkDeviceMemory uniformMemory = VK_NULL_HANDLE;
-
-  struct Uniforms {
-    float time;
-    float bass;      // low frequency energy
-    float mid;       // mid frequency energy
-    float padding;
-    glm::vec2 resolution;
-  };
-
-  Uniforms uniforms{};
 };
